@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f0d17">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sabi Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== TOAST ===== -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <!-- ===== SCREEN: LOGIN ===== -->
+  <div id="screen-login" class="screen active">
+    <div class="login-container">
+      <div class="wordmark">Sabi Admin</div>
+      <form id="login-form" class="login-form" autocomplete="off">
+        <input
+          type="password"
+          id="admin-code-input"
+          class="admin-code-input"
+          placeholder="Admin code"
+          aria-label="Enter admin code"
+          autocomplete="off"
+        >
+        <button type="submit" id="login-btn" class="btn-primary">Enter →</button>
+        <p id="login-error" class="error-message" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN: DASHBOARD ===== -->
+  <div id="screen-dashboard" class="screen">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-left">
+          <span class="wordmark-small">Sabi Admin</span>
+        </div>
+        <div class="topbar-right">
+          <button id="btn-add-student" class="btn-outline" title="Add Student">+ Student</button>
+          <button id="btn-add-lesson" class="btn-outline" title="Add Lesson">+ Lesson</button>
+          <button id="btn-add-payment" class="btn-outline" title="Record Payment">+ Payment</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+
+      <!-- Stats Row -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div id="stat-students" class="stat-number">—</div>
+          <div class="stat-label">Students</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-lessons" class="stat-number">—</div>
+          <div class="stat-label">Lessons</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-revenue" class="stat-number">—</div>
+          <div class="stat-label">Revenue</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-pending" class="stat-number">—</div>
+          <div class="stat-label">Pending</div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search by name or code..."
+          aria-label="Search students"
+        >
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" role="tablist">
+        <button class="filter-tab active" data-school="All" role="tab" aria-selected="true">All</button>
+        <button class="filter-tab" data-school="FULAFIA" role="tab" aria-selected="false">FULAFIA</button>
+        <button class="filter-tab" data-school="ATBU" role="tab" aria-selected="false">ATBU</button>
+        <button class="filter-tab" data-school="UNIBEN" role="tab" aria-selected="false">UNIBEN</button>
+      </div>
+
+      <!-- Student List -->
+      <div class="section-header">
+        <h2 class="section-title">Recent Students</h2>
+      </div>
+      <div id="student-list" class="student-list">
+        <div class="empty-state">Loading...</div>
+      </div>
+
+      <!-- Referrer Leaderboard -->
+      <div class="section-header referrer-header">
+        <h2 class="section-title">Referrers</h2>
+        <button id="btn-add-referrer" class="btn-outline btn-outline-small">+ Referrer</button>
+      </div>
+      <div id="referrer-list" class="referrer-list">
+        <div class="empty-state">Loading...</div>
+      </div>
+
+      <!-- Logout -->
+      <button id="btn-logout" class="btn-logout">Log out</button>
+
+    </main>
+  </div>
+
+  <!-- ===== SCREEN: STUDENT DETAIL ===== -->
+  <div id="screen-detail" class="screen">
+    <main class="detail-main">
+      <button id="btn-back" class="btn-back">← Back</button>
+
+      <h2 id="detail-heading" class="detail-heading"></h2>
+
+      <div id="detail-info" class="detail-info"></div>
+
+      <!-- Detail Payments -->
+      <div class="detail-section">
+        <h3 class="detail-section-title">Payments</h3>
+        <div id="detail-payments" class="detail-payments"></div>
+      </div>
+
+      <!-- Detail Lessons -->
+      <div class="detail-section">
+        <h3 class="detail-section-title">Lessons</h3>
+        <div id="detail-lessons" class="detail-lessons"></div>
+      </div>
+
+      <!-- Detail Actions -->
+      <div id="detail-actions" class="detail-actions"></div>
+    </main>
+  </div>
+
+  <!-- ===== MODAL OVERLAY ===== -->
+  <div id="modal-overlay" class="modal-overlay" hidden>
+    <div id="modal-card" class="modal-card" role="dialog" aria-modal="true">
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
